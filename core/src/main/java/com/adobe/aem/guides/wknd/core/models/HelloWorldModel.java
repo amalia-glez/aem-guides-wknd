@@ -19,6 +19,7 @@ import static org.apache.sling.api.resource.ResourceResolver.PROPERTY_RESOURCE_T
 
 import javax.annotation.PostConstruct;
 
+import com.adobe.xfa.ut.StringUtils;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.Default;
@@ -37,8 +38,8 @@ import java.util.Optional;
 @Model(adaptables = Resource.class)
 public class HelloWorldModel {
 
-    @ValueMapValue(name=PROPERTY_RESOURCE_TYPE, injectionStrategy=InjectionStrategy.OPTIONAL)
-    @Default(values="No resourceType")
+    @ValueMapValue(name = PROPERTY_RESOURCE_TYPE, injectionStrategy = InjectionStrategy.OPTIONAL)
+    @Default(values = "No resourceType")
     protected String resourceType;
 
     @OSGiService
@@ -47,6 +48,12 @@ public class HelloWorldModel {
     private Resource currentResource;
     @SlingObject
     private ResourceResolver resourceResolver;
+
+    @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
+    protected String greeting;
+
+    @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
+    protected String text;
 
     private String message;
 
@@ -58,13 +65,21 @@ public class HelloWorldModel {
                 .map(Page::getPath).orElse("");
 
         message = "\tHello World!\n"
-            + "\tThis is instance: " + settings.getSlingId() + "\n"
-            + "\tResource type is: " + resourceType + "\n"
-            + "\tCurrent page is: " + currentPagePath + "\n";
+                + "\tThis is instance: " + settings.getSlingId() + "\n"
+                + "\tResource type is: " + resourceType + "\n"
+                + "\tCurrent page is: " + currentPagePath + "\n";
     }
 
     public String getMessage() {
         return message;
+    }
+
+    public String getGreeting() {
+        return !StringUtils.isEmpty(this.greeting) ? this.greeting : "Hello";
+    }
+
+    public String getTextUpperCase() {
+        return !StringUtils.isEmpty(this.text) ? this.text.toUpperCase() : null;
     }
 
 }
