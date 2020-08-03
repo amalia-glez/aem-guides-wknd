@@ -7,18 +7,14 @@
     <content
             jcr:primaryType="nt:unstructured"
             sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+
         <items jcr:primaryType="nt:unstructured">
-            <column
+            <text
                     jcr:primaryType="nt:unstructured"
-                    sling:resourceType="granite/ui/components/coral/foundation/container">
-                <items jcr:primaryType="nt:unstructured">
-                    <text
-                            jcr:primaryType="nt:unstructured"
-                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                            fieldLabel="Text"
-                            name="./text"/>
-                </items>
-            </column>
+                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                    fieldLabel="Text"
+                    name="./text"/>
         </items>
+
     </content>
 </jcr:root>

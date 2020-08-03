@@ -4,8 +4,8 @@
 </sly>
 <div data-sly-use.breadcrumb="com.adobe.aem.guides.wknd.core.models.Breadcrumb">
     <ul class="breadcrumb">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Pictures</a></li>
-        <li><a href="#">${breadcrumb.text}</a></li>
+        <li data-sly-test="${breadcrumb}">1</li>
+        <li data-sly-test="${breadcrumb}">2</li>
+        <li data-sly-test="${breadcrumb.message}">${breadcrumb.message}</li>
     </ul>
 </div>
