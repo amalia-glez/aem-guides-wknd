@@ -1,4 +1,11 @@
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+    <sly data-sly-call="${clientlib.js @ categories='wknd.breadcrumb'}"/>
+    <sly data-sly-call="${clientlib.css @ categories='wknd.breadcrumb'}"/>
+</sly>
 <div data-sly-use.breadcrumb="com.adobe.aem.guides.wknd.core.models.Breadcrumb">
-    <h1 data-sly-test="${breadcrumb.text}">${breadcrumb.text}</h1>
-    <h1 class="title">Hello bread component!</h1>
+    <ul class="breadcrumb">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Pictures</a></li>
+        <li><a href="#">${breadcrumb.text}</a></li>
+    </ul>
 </div>
