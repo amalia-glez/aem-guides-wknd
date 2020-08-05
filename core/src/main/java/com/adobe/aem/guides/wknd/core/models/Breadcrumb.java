@@ -9,6 +9,7 @@ import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.InjectionStrategy;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
+
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,6 +39,13 @@ public class Breadcrumb {
 
     private int length;
 
+    public boolean isPage() {
+        if (pathPage.equals("wknd/components/structure/page")) {
+            return true;
+        }
+        return false;
+    }
+
     @PostConstruct
     protected void init() {
 
@@ -46,13 +54,16 @@ public class Breadcrumb {
         String currentPagePath = Optional.ofNullable(pageManager)
                 .map(pm -> pm.getContainingPage(currentResource))
                 .map(Page::getPath).orElse("");
+
+        pathPage = currentPage.getContentResource().getResourceType();
         Page currentPageResult = currentPage;
         path = currentPagePath;
-        pathPage = currentPage.getContentResource().getResourceType();
-        length = currentPage.getDepth();
 
-        for (int i = 0; i < length; i++) {
-            pageList.add(currentPage.getAbsoluteParent(i));
+        if (isPage() == true) {
+            length = currentPage.getDepth();
+            for (int i = 0; i < length; i++) {
+                pageList.add(currentPage.getAbsoluteParent(i));
+            }
         }
     }
 

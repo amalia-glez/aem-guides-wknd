@@ -3,8 +3,7 @@
     <sly data-sly-call="${clientlib.css @ categories='wknd.breadcrumb'}"/>
 </sly>
 
-<div data-sly-use.breadcrumb="com.adobe.aem.guides.wknd.core.models.Breadcrumb"
-     data-sly-test="${'wknd/components/structure/page' == breadcrumb.pathPage}">
+<div data-sly-use.breadcrumb="com.adobe.aem.guides.wknd.core.models.Breadcrumb" data-sly-test="${breadcrumb.page}">
     <ul class="breadcrumb" data-sly-list.listitem="${breadcrumb.pageList}">
         <li><a href="${listitem.path @ extension='html'}">${listitem.name}</a></li>
     </ul>
