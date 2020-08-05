@@ -26,5 +26,4 @@ ul.breadcrumb li a {
 /* Add a color on mouse-over */
 ul.breadcrumb li a:hover {
   color: grey;
-  text-decoration: underline;
 }
