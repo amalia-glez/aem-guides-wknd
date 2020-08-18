@@ -1,19 +1,21 @@
 <sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
-    <sly data-sly-call="${clientlib.all @ categories='wknd.gallery'}"/>
+    <sly data-sly-call="${clientlib.css @ categories='wknd.gallery'}"/>
 </sly>
-<div data-sly-use.gallery="com.adobe.aem.guides.wknd.core.models.GalleryModel">
-    <sly data-sly-test="${gallery.articles} > 0" data-sly-list.article="${gallery.articles}">
-        <div>
-            <p>${article.landingTitle}</p>
-            <p>${article.landingDate}</p>
-        </div>
-        <div>
-            <div>
-                <div>
-                    <p>${article.articleTitle}</p>
-                    <p>${article.articleDate}</p>
+<div data-sly-use.gallery="com.adobe.aem.guides.wknd.core.models.GalleryModel" data-sly-test="${gallery.template}">
+    <sly data-sly-list.article="${gallery.articleList}">
+        <div class="main-div">
+            <div class="landing-div">
+                <a href="${gallery.path @ extension='html'}">${gallery.landingTitle}</a>
+                <p>${'yyyy-MM-dd' @ format=gallery.landingDate}</p>
+            </div>
+            <div class="body-div">
+                <div class="article-div">
+                    <a href="${article.pathArticle @ extension='html'}">${article.titleArticle}</a>
+                    <p>${'yyyy-MM-dd' @ format=article.dateArticle}</p>
                 </div>
-                <img src="${article.articleImg}" alt="ArticleImage">
+                <div class="img-div">
+                    <img src="" alt="ArticleImage">
+                </div>
             </div>
         </div>
     </sly>

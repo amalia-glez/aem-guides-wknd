@@ -1,0 +1,23 @@
+.main-div {
+    padding: 20px;
+    border: 1px solid gray;
+    margin: 10px 0px;
+}
+
+.landing-div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.body-div {
+    padding: 0px 40px;
+}
+
+.article-div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.img-div {
+
+}
